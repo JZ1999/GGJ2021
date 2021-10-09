@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 3437665873264930494}
   m_Layer: 0
   m_Name: Victim
-  m_TagString: Untagged
+  m_TagString: Victims
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
