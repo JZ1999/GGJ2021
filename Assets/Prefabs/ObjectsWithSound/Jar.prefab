@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5289502584784568822}
   - component: {fileID: -9109738713092027202}
   - component: {fileID: 6300728808657084558}
+  - component: {fileID: 1707023187}
   m_Layer: 0
   m_Name: Jar
   m_TagString: Untagged
@@ -109,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 0
   soundSO: {fileID: 11400000, guid: 41aaf538b6ff56b4397f665f75866e42, type: 2}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 6300728808657084558}
 --- !u!82 &6300728808657084558
 AudioSource:
   m_ObjectHideFlags: 0
@@ -206,3 +207,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &1707023187
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430248180121784832}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 3437665873264930494}
   m_Layer: 0
   m_Name: Victim
-  m_TagString: Untagged
+  m_TagString: Victims
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,6 +206,8 @@ MonoBehaviour:
   speed: 20
   variableJoystick: {fileID: 0}
   rb: {fileID: 3437665872966328670}
+  joystick: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
+    type: 3}
 --- !u!114 &3437665872966328672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   variableJoystick: {fileID: 0}
   y: {x: 0, y: 0, z: 0}
+  joystick: {fileID: 2317864243762153009, guid: c5a50fcaa489f8d4eb947832aa08add0,
+    type: 3}
 --- !u!54 &3437665872966328670
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -5,7 +5,8 @@ using UnityEngine;
 public class CanCaptureVictim : MonoBehaviour
 {
     public GameObject UiButton;
-    public GameObject victim; 
+	public GameObject buttonPrefab;
+	private GameObject victim; 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Victims"))
@@ -26,4 +27,11 @@ public class CanCaptureVictim : MonoBehaviour
     {
         Destroy(victim);
     }
+
+	public void SpawnCapture()
+	{
+		GameObject canvas = ((Canvas)FindObjectOfType(typeof(Canvas))).gameObject;
+
+		UiButton = Instantiate(buttonPrefab, canvas.transform);
+	}
 }

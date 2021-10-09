@@ -28,6 +28,7 @@ public class ActivatedSoundObject : MonoBehaviour
                 
                 if (triggerObject)
                 {
+                    Debug.Log("entro");
                     CalcultatedSound();
                 }
                 velocity = 0;
@@ -59,10 +60,10 @@ public class ActivatedSoundObject : MonoBehaviour
                 break;
         };
     }
-
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        triggerObject = other.gameObject;
+
+        triggerObject = collision.gameObject;
     }
     private void OnTriggerExit()
     {
