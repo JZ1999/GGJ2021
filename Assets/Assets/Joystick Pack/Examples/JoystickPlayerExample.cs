@@ -14,6 +14,7 @@ public class JoystickPlayerExample : MonoBehaviour
 			return;
         Vector3 direction = gameObject.transform.forward * variableJoystick.Vertical + gameObject.transform.right * variableJoystick.Horizontal;
         rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        
     }
 
 	public void SpawnJoyStick()
