@@ -9,7 +9,9 @@ public class PlayerRotate : MonoBehaviour
 
     public void FixedUpdate()
     {
-        transform.Rotate(y + new Vector3(0, variableJoystick.Horizontal, 0), Space.Self);
+		if (!variableJoystick)
+			return;
+		transform.Rotate(y + new Vector3(0, variableJoystick.Horizontal, 0), Space.Self);
         Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
     }
 }
