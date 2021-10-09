@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - Capturer
   - Victims
+  - Floor
   layers:
   - Default
   - TransparentFX

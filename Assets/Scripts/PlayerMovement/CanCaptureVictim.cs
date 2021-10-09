@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Photon.Pun;
 
 public class CanCaptureVictim : MonoBehaviour
 {
     public GameObject UiButton;
 	public GameObject buttonPrefab;
-	private GameObject victim; 
+	private GameObject victim;
+	public GameSetupController gameSetup;
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Victims"))
@@ -25,7 +28,7 @@ public class CanCaptureVictim : MonoBehaviour
     }
     public void Capture()
     {
-        Destroy(victim);
+        gameSetup.Destroy(victim.GetComponent<PhotonView>().ViewID);
     }
 
 	public void SpawnCapture()
@@ -33,5 +36,6 @@ public class CanCaptureVictim : MonoBehaviour
 		GameObject canvas = ((Canvas)FindObjectOfType(typeof(Canvas))).gameObject;
 
 		UiButton = Instantiate(buttonPrefab, canvas.transform);
+		UiButton.GetComponent<Button>().onClick.AddListener(Capture);
 	}
 }

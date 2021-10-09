@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 3437665872966328670}
   - component: {fileID: -374192075164811157}
   - component: {fileID: 3437665873264930494}
+  - component: {fileID: -41662880337558399}
   m_Layer: 0
   m_Name: Victim
   m_TagString: Victims
@@ -208,6 +209,7 @@ MonoBehaviour:
   rb: {fileID: 3437665872966328670}
   joystick: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
     type: 3}
+  gameSetup: {fileID: 0}
 --- !u!114 &3437665872966328672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +226,7 @@ MonoBehaviour:
   y: {x: 0, y: 0, z: 0}
   joystick: {fileID: 2317864243762153009, guid: c5a50fcaa489f8d4eb947832aa08add0,
     type: 3}
+  gameSetup: {fileID: 0}
 --- !u!54 &3437665872966328670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -276,3 +279,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 3437665872076367921}
+--- !u!114 &-41662880337558399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437665872966328679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5881b0ed6778eda4286ed2f106ac70fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 347
+  rb: {fileID: 3437665872966328670}
+  isGrounded: 1
+  jumpButton: {fileID: 0}
+  jumpButtonPrefab: {fileID: 3107188617306199100, guid: ae0ee49bb9556454eb7905a923695f73,
+    type: 3}
+  gameSetup: {fileID: 0}

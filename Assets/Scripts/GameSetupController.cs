@@ -48,17 +48,27 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 				Vector3 newVector = JsonUtility.FromJson<Vector3>(json);
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<PlayerRotate>().ApplyRotation(newVector);
 				break;
+			case "jump":
+				direction = JsonUtility.FromJson<Vector3>(json);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<Jump>().rb.AddForce(direction);
+				break;
 		}
 	}
 
 	private void CreatePlayer()
 	{
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
-		string prefabName = playersInRoom % 2 == 1 ? "Victim" : "Capturer";
-		Transform spawn = playersInRoom % 2 == 1 ? victimSpawn : capturerSpawn;
+		string prefabName = playersInRoom % 2 != 1 ? "Victim" : "Capturer";
+		Transform spawn = playersInRoom % 2 != 1 ? victimSpawn : capturerSpawn;
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
 		player.GetComponent<JoystickPlayerExample>().gameSetup = this;
 		player.GetComponent<PlayerRotate>().gameSetup = this;
+		player.GetComponent<Jump>().gameSetup = this;
+		if (player.GetComponentInChildren<CanCaptureVictim>())
+		{
+			player.GetComponentInChildren<CanCaptureVictim>().gameSetup = this;
+		}
+		
 
 		players.Add(player);
 	}
@@ -66,5 +76,10 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
 	{
 
+	}
+
+	public void Destroy(int viewID)
+	{
+		PhotonNetwork.Destroy(PhotonView.Find(viewID).gameObject);
 	}
 }

@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 			playerCamera.SetActive(true);
 			GetComponent<JoystickPlayerExample>().SpawnJoyStick();
 			GetComponent<PlayerRotate>().SpawnJoyStick();
+			GetComponent<Jump>().SpawnJumpButton();
 
 			if (GetComponentInChildren<CanCaptureVictim>()) {
 				GetComponentInChildren<CanCaptureVictim>().SpawnCapture();
