@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 public class GameSetupController : MonoBehaviourPun, IPunObservable
 {
@@ -10,7 +11,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 
 	public List<GameObject> players;
 
-	public Transform spawn;
+	public Transform victimSpawn;
+	public Transform capturerSpawn;
 
 	public GameObject prefab;
 
@@ -18,47 +20,51 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	// Start is called before the first frame update
 	void Start()
 	{
-		Debug.Log(gameObject);
 		players = new List<GameObject>();
 		photonView = gameObject.AddComponent<PhotonView>();
 		photonView.ViewID = 1;
 		CreatePlayer();
-		//Send message
-		photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "test");
 	}
 
-	public void SendMessage(string message)
+	public void SendMessage(string type, string json, string viewID)
 	{
-		photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, message);
-	}
-
-	public void SendMessage(string type, string json)
-	{
-		photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, type, json);
+		photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, type, json, viewID);
 	}
 
 	[PunRPC]
-	void SendChat(Photon.Realtime.Player sender, string debuff)
+	void SendChat(Photon.Realtime.Player sender, string type, string json, string viewID)
 	{
-		
+
 		if (sender.IsLocal)
 			return;
-		Debug.Log(string.Format("{0} {1} {2} {3} {4} {5}", sender.IsLocal, sender.UserId, sender.IsMasterClient, sender.NickName, sender.HasRejoined, sender.ActorNumber));
-		Debug.Log(debuff);
+		Vector3 direction;
+		switch (type)
+		{
+			case "movement":
+				direction = JsonUtility.FromJson<Vector3>(json);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<JoystickPlayerExample>().ApplyForce(direction);
+				break;
+			case "rotation":
+				Vector3 newVector = JsonUtility.FromJson<Vector3>(json);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<PlayerRotate>().ApplyRotation(newVector);
+				break;
+		}
 	}
 
 	private void CreatePlayer()
 	{
-		Debug.Log("Creating Player");
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
-		
-		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Victim"), spawn.position, Quaternion.identity);
+		string prefabName = playersInRoom % 2 == 1 ? "Victim" : "Capturer";
+		Transform spawn = playersInRoom % 2 == 1 ? victimSpawn : capturerSpawn;
+		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
+		player.GetComponent<JoystickPlayerExample>().gameSetup = this;
+		player.GetComponent<PlayerRotate>().gameSetup = this;
 
+		players.Add(player);
 	}
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
 	{
-		Debug.Log(stream);
-		Debug.Log(info);
+
 	}
 }

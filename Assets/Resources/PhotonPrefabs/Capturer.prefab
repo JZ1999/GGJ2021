@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &879630128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879630129}
+  - component: {fileID: 879630131}
+  - component: {fileID: 879630130}
+  m_Layer: 0
+  m_Name: CaptureRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &879630129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879630128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3437665872966328669}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &879630131
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879630128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.52
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &879630130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879630128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c9c675b69fe4e4dba5d0893cc67ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UiButton: {fileID: 0}
+  buttonPrefab: {fileID: 4424825633632308677, guid: dd0c5643f1d9274458e0309341612749,
+    type: 3}
 --- !u!1 &3437665872076367921
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,12 +170,12 @@ GameObject:
   - component: {fileID: -374192075164811157}
   - component: {fileID: 3437665873264930494}
   m_Layer: 0
-  m_Name: Victim
-  m_TagString: Victims
+  m_Name: Capturer
+  m_TagString: Capturer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3437665872966328669
 Transform:
   m_ObjectHideFlags: 0
@@ -128,6 +188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3437665872076367918}
+  - {fileID: 879630129}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -208,6 +269,7 @@ MonoBehaviour:
   rb: {fileID: 3437665872966328670}
   joystick: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
     type: 3}
+  gameSetup: {fileID: 0}
 --- !u!114 &3437665872966328672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +286,7 @@ MonoBehaviour:
   y: {x: 0, y: 0, z: 0}
   joystick: {fileID: 2317864243762153009, guid: c5a50fcaa489f8d4eb947832aa08add0,
     type: 3}
+  gameSetup: {fileID: 0}
 --- !u!54 &3437665872966328670
 Rigidbody:
   m_ObjectHideFlags: 0

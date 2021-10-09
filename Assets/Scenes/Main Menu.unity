@@ -1016,6 +1016,11 @@ PrefabInstance:
       propertyPath: quickCancelButton
       value: 
       objectReference: {fileID: 1086776591}
+    - target: {fileID: 2927578878507806595, guid: 842b79c95965dc04e84c0b9b99ae917c,
+        type: 3}
+      propertyPath: multiplayerSceneIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3594148429800263808, guid: 842b79c95965dc04e84c0b9b99ae917c,
         type: 3}
       propertyPath: m_Name

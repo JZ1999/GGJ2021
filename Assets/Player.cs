@@ -16,6 +16,13 @@ public class Player : MonoBehaviour
 		if (GetComponent<PhotonView>().IsMine)
 		{
 			playerCamera.SetActive(true);
+			GetComponent<JoystickPlayerExample>().SpawnJoyStick();
+			GetComponent<PlayerRotate>().SpawnJoyStick();
+
+			if (GetComponentInChildren<CanCaptureVictim>()) {
+				GetComponentInChildren<CanCaptureVictim>().SpawnCapture();
+			}
+				
 		}
     }
 
