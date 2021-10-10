@@ -25,7 +25,7 @@ public class WinLoseManager : MonoBehaviour
         maxTimeForAwaking -= Time.deltaTime;
         if(maxTimeForAwaking <= 0)
         {
-            loseVictims();
+            LoseVictims();
         }
     }
 
@@ -48,7 +48,7 @@ public class WinLoseManager : MonoBehaviour
         Debug.Log("se despertó el humano, victimas han ganado");
     }
 
-    public void loseVictims()
+    public void LoseVictims()
     {
         uiLoseVictims.SetActive(true);
         Debug.Log("se hizo de dia, victimas han perdido");
