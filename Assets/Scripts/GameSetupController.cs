@@ -16,6 +16,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 
 	public GameObject prefab;
 
+	public GameObject[] props;
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -52,14 +54,30 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 				direction = JsonUtility.FromJson<Vector3>(json);
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<Jump>().rb.AddForce(direction);
 				break;
+			case "prop":
+				PropInfo propInfo = JsonUtility.FromJson<PropInfo>(json);
+				foreach(GameObject prop in props)
+				{
+					if(prop.GetComponent<Prop>().propName == propInfo.name)
+					{
+						if(propInfo.interactionType == "activate")
+						{
+							prop.GetComponent<Prop>().interactWithProp();
+						} else if(propInfo.interactionType == "activate")
+						{
+							prop.GetComponent<Prop>().deactivateProp();
+						}
+					}
+				}
+				break;
 		}
 	}
 
 	private void CreatePlayer()
 	{
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
-		string prefabName = playersInRoom % 2 != 1 ? "Victim" : "Capturer";
-		Transform spawn = playersInRoom % 2 != 1 ? victimSpawn : capturerSpawn;
+		string prefabName = playersInRoom % 2 == 1 ? "Victim" : "Capturer";
+		Transform spawn = playersInRoom % 2 == 1 ? victimSpawn : capturerSpawn;
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
 		player.GetComponent<JoystickPlayerExample>().gameSetup = this;
 		player.GetComponent<PlayerRotate>().gameSetup = this;

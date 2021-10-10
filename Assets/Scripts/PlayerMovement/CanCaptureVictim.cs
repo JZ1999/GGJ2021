@@ -15,7 +15,10 @@ public class CanCaptureVictim : MonoBehaviour
         if (other.CompareTag("Props"))
         {
             prop = other.gameObject;
-            UiButton.SetActive(true);
+			if (UiButton)
+			{
+				UiButton.SetActive(true);
+			}
         }
     }
     private void OnTriggerExit(Collider other)
@@ -23,12 +26,35 @@ public class CanCaptureVictim : MonoBehaviour
         if (other.CompareTag("Props"))
         {
             prop = null;
-            UiButton.SetActive(false);
+			if (UiButton)
+			{
+				UiButton.SetActive(false);
+			}
         }
     }
     public void Capture()
     {
-		prop.GetComponent<Prop>().interactWithProp();
+		int viewID = GetComponentInParent<PhotonView>().ViewID;
+		if (transform.parent.CompareTag("Victims"))
+		{
+			PropInfo propInfo = new PropInfo()
+			{
+				name = prop.GetComponent<Prop>().name,
+				interactionType = "activate"
+			};
+			gameSetup.GetComponent<PhotonView>().RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "prop", JsonUtility.ToJson(propInfo), viewID.ToString());
+			prop.GetComponent<Prop>().interactWithProp();	
+		} else if(transform.parent.CompareTag("Capturer"))
+		{
+			PropInfo propInfo = new PropInfo()
+			{
+				name = prop.GetComponent<Prop>().name,
+				interactionType = "deactivate"
+			};
+			gameSetup.GetComponent<PhotonView>().RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "prop", JsonUtility.ToJson(propInfo), viewID.ToString());
+			prop.GetComponent<Prop>().deactivateProp();
+		}
+		
     }
 
 	public void SpawnCapture()
