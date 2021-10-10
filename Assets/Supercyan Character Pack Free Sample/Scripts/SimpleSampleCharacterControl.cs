@@ -159,6 +159,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
 
         m_animator.SetFloat("MoveSpeed", m_currentV);
+        m_animator.SetFloat("RotationSpeed",h);
 
         JumpingAndLanding();
     }
@@ -193,6 +194,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
 
             m_animator.SetFloat("MoveSpeed", direction.magnitude);
+           
         }
 
         JumpingAndLanding();
