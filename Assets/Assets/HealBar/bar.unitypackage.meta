@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Assets/HealBar/bar.unitypackage.meta
 guid: ea7dd0a9c4f4e8542a84de9252a13b60
+=======
+guid: 241181e4b5d70134989c0265a8a2ffcc
+folderAsset: yes
+>>>>>>> origin/main:Assets/Animation.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
