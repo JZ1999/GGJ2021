@@ -371,7 +371,7 @@ PrefabInstance:
     - target: {fileID: 2962569706031600488, guid: d0c758e6b3da7334cb74830df7ca6f38,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2962569706031600488, guid: d0c758e6b3da7334cb74830df7ca6f38,
         type: 3}
@@ -15390,6 +15390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064227985923987775, guid: 2e0b72bc43928394888e9e9e821397a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1979499380246416826, guid: 2e0b72bc43928394888e9e9e821397a3,
         type: 3}

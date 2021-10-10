@@ -42,6 +42,9 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 		Vector3 direction;
 		switch (type)
 		{
+			case "teleport":
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.transform.position = JsonUtility.FromJson<Vector3>(json);
+				break;
 			case "movement":
 				InputsInfo inputs = JsonUtility.FromJson<InputsInfo>(json);
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().TankUpdate(inputs.horizontal, inputs.vertical);
