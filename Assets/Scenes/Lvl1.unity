@@ -1375,6 +1375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 372832279}
+  - component: {fileID: 372832280}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1396,6 +1397,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372832280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372832278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cace50ed7e4d684ca5e556e91ba3c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSoundForAwaking: 100
+  soundForAwaking: 0
+  uiBarFront: {fileID: 1203623024}
 --- !u!1 &406152305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,6 +1884,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9109738713092027202, guid: 5a4dc08c2d9a72641bebe10e30a8f070,
+        type: 3}
+      propertyPath: winLoseManager
+      value: 
+      objectReference: {fileID: 372832280}
     - target: {fileID: 430248180121784832, guid: 5a4dc08c2d9a72641bebe10e30a8f070,
         type: 3}
       propertyPath: m_Name
@@ -3396,6 +3417,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200149122}
   m_CullTransparentMesh: 0
+--- !u!114 &1203623024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6932466049772294876, guid: 5ac46ae0eed73854a9d9704e1ca7b973,
+    type: 3}
+  m_PrefabInstance: {fileID: 924101975}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1309250003
 GameObject:
   m_ObjectHideFlags: 0
