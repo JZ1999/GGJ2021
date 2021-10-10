@@ -63,7 +63,7 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 						if(propInfo.interactionType == "activate")
 						{
 							prop.GetComponent<Prop>().interactWithProp();
-						} else if(propInfo.interactionType == "activate")
+						} else if(propInfo.interactionType == "deactivate")
 						{
 							prop.GetComponent<Prop>().deactivateProp();
 						}
@@ -76,8 +76,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	private void CreatePlayer()
 	{
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
-		string prefabName = playersInRoom % 2 == 1 ? "Victim" : "Capturer";
-		Transform spawn = playersInRoom % 2 == 1 ? victimSpawn : capturerSpawn;
+		string prefabName = playersInRoom % 2 != 1 ? "Victim" : "Capturer";
+		Transform spawn = playersInRoom % 2 != 1 ? victimSpawn : capturerSpawn;
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
 		player.GetComponent<JoystickPlayerExample>().gameSetup = this;
 		player.GetComponent<PlayerRotate>().gameSetup = this;

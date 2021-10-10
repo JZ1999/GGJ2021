@@ -70,15 +70,27 @@ public class CanCaptureVictim : MonoBehaviour
 
     public void CaptureVictim()
     {
-        Debug.Log(prop.name);
-        prop.GetComponent<JoystickPlayerExample>().SetTimeAnda(); //llamar lo online de jsopeh para que la ande el
-    }
+		int viewID = GetComponentInParent<PhotonView>().ViewID;
+		if (prop.CompareTag("Victims"))
+		{
+			Debug.Log(prop.name);
+			prop.GetComponent<JoystickPlayerExample>().SetTimeAnda(); //llamar lo online de jsopeh para que la ande el
+		} else if (prop.CompareTag("Props")) {
+			PropInfo propInfo = new PropInfo()
+			{
+				name = prop.GetComponent<Prop>().name,
+				interactionType = "deactivate"
+			};
+			gameSetup.GetComponent<PhotonView>().RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "prop", JsonUtility.ToJson(propInfo), viewID.ToString());
+			prop.GetComponent<Prop>().deactivateProp();
+		}
+	}
 	public void SpawnCapture()
 	{
 		GameObject canvas = ((Canvas)FindObjectOfType(typeof(Canvas))).gameObject;
 
 		UiButton = Instantiate(buttonPrefab, canvas.transform);
-        if(gameObject.CompareTag("Victims"))
+        if(transform.parent.gameObject.CompareTag("Victims"))
 		    UiButton.GetComponent<Button>().onClick.AddListener(Capture);
         else
             UiButton.GetComponent<Button>().onClick.AddListener(CaptureVictim);

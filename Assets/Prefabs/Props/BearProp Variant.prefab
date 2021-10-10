@@ -143,6 +143,7 @@ MonoBehaviour:
   propSound: {fileID: 2729220359313218970}
   anim: {fileID: 8760998246616670428}
   particles: {fileID: 114476, guid: 225085907981d1a4f9901b6ced5b2657, type: 3}
+  propName: BearProp
 --- !u!135 &2729220359313218971
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -203,12 +204,12 @@ PrefabInstance:
     - target: {fileID: 3616809761368115239, guid: 42401a433a5c1874f8f51bdcd68b2e30,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.91
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3616809761368115239, guid: 42401a433a5c1874f8f51bdcd68b2e30,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.82
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3616809761368115239, guid: 42401a433a5c1874f8f51bdcd68b2e30,
         type: 3}
@@ -218,17 +219,17 @@ PrefabInstance:
     - target: {fileID: 3616809761368115239, guid: 42401a433a5c1874f8f51bdcd68b2e30,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3616809761368115239, guid: 42401a433a5c1874f8f51bdcd68b2e30,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3616809761368115239, guid: 42401a433a5c1874f8f51bdcd68b2e30,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3616809761368115239, guid: 42401a433a5c1874f8f51bdcd68b2e30,
         type: 3}
