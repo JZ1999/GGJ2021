@@ -1860,6 +1860,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar
       objectReference: {fileID: 0}
+    - target: {fileID: 430248180121784832, guid: 5a4dc08c2d9a72641bebe10e30a8f070,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018557663898761146, guid: 5a4dc08c2d9a72641bebe10e30a8f070,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658431003529828982, guid: 5a4dc08c2d9a72641bebe10e30a8f070,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7601383517247513814, guid: 5a4dc08c2d9a72641bebe10e30a8f070,
         type: 3}
       propertyPath: m_RootOrder
