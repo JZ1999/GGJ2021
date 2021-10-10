@@ -11,6 +11,8 @@ public class WinLoseManager : MonoBehaviour
     public float maxTimeForAwaking;
     public float soundForAwaking;
     public Image uiBarFront;
+    public GameObject uiLoseVictims;
+    public GameObject uiLoseCapture;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class WinLoseManager : MonoBehaviour
     private void Update()
     {
         maxTimeForAwaking -= Time.deltaTime;
-        if(maxTimeForAwaking == 0)
+        if(maxTimeForAwaking <= 0)
         {
             loseVictims();
         }
@@ -42,11 +44,13 @@ public class WinLoseManager : MonoBehaviour
 
     public void Awaking()
     {
+        uiLoseCapture.SetActive(true);
         Debug.Log("se despertó el humano, victimas han ganado");
     }
 
     public void loseVictims()
     {
+        uiLoseVictims.SetActive(true);
         Debug.Log("se hizo de dia, victimas han perdido");
     }
 }

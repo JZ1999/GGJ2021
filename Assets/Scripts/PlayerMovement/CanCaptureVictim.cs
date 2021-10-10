@@ -10,9 +10,15 @@ public class CanCaptureVictim : MonoBehaviour
 	public GameObject buttonPrefab;
 	private GameObject prop;
 	public GameSetupController gameSetup;
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Props"))
+        {
+            prop = other.gameObject;
+            UiButton.SetActive(true);
+        }
+        if (other.CompareTag("Victims"))
         {
             prop = other.gameObject;
             UiButton.SetActive(true);
@@ -25,17 +31,30 @@ public class CanCaptureVictim : MonoBehaviour
             prop = null;
             UiButton.SetActive(false);
         }
+        if(other.CompareTag("Victims"))
+        {
+            prop = null;
+            UiButton.SetActive(false);
+        }
     }
     public void Capture()
     {
 		prop.GetComponent<Prop>().interactWithProp();
     }
 
+    public void CaptureVictim()
+    {
+        Debug.Log(prop.name);
+        prop.GetComponent<JoystickPlayerExample>().SetTimeAnda(); //llamar lo online de jsopeh para que la ande el
+    }
 	public void SpawnCapture()
 	{
 		GameObject canvas = ((Canvas)FindObjectOfType(typeof(Canvas))).gameObject;
 
 		UiButton = Instantiate(buttonPrefab, canvas.transform);
-		UiButton.GetComponent<Button>().onClick.AddListener(Capture);
-	}
+        if(gameObject.CompareTag("Victims"))
+		    UiButton.GetComponent<Button>().onClick.AddListener(Capture);
+        else
+            UiButton.GetComponent<Button>().onClick.AddListener(CaptureVictim);
+    }
 }
