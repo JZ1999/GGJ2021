@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1944670226200956514}
+  - component: {fileID: 61894984}
   m_Layer: 0
   m_Name: OnlineGameSetup
   m_TagString: Untagged
@@ -30,3 +31,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &61894984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2152212103071835468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7af9bf731efe647a1e2cdcf72be099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
+  players: []
+  victimSpawn: {fileID: 0}
+  capturerSpawn: {fileID: 0}
+  prefab: {fileID: 3437665872966328679, guid: ac788b8e175e29a46b9c3b2387f5aeaa, type: 3}

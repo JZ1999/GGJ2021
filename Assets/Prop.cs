@@ -10,6 +10,7 @@ public class Prop : MonoBehaviour
 	private Animator anim;
 	[SerializeField]
 	private GameObject particles;
+	public string propName;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -29,12 +30,18 @@ public class Prop : MonoBehaviour
 		activateParticles();
 	}
 
+	public void deactivateProp()
+	{
+		deactivatePropSound();
+		deactivateAnimator();
+		deactivateParticles();
+	}
+
 	private void activateParticles()
 	{
 		if (particles)
 		{
 			Instantiate(particles, transform);
-			Destroy(particles, 1000);
 		}
 	}
 
@@ -48,4 +55,26 @@ public class Prop : MonoBehaviour
 	{
 		anim.SetBool("Shake", true);
 	}
+
+	private void deactivateParticles()
+	{
+		if (particles)
+		{
+			GameObject particleObject = transform.GetComponentInChildren<ParticleSystem>()?.gameObject;
+			if(particleObject)
+				Destroy(particleObject);
+		}
+	}
+
+	private void deactivatePropSound()
+	{
+		if (propSound.isPlaying)
+			propSound.Stop();
+	}
+
+	private void deactivateAnimator()
+	{
+		anim.SetBool("Shake", false);
+	}
+
 }
