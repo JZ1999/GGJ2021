@@ -1410,6 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSoundForAwaking: 100
+  maxTimeForAwaking: 100
   soundForAwaking: 0
   uiBarFront: {fileID: 1203623024}
 --- !u!1 &406152305

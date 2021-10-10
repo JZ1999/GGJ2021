@@ -7,6 +7,8 @@ public class WinLoseManager : MonoBehaviour
 {
     [Range(100, 200)]
     public float maxSoundForAwaking;
+    [Range(100, 200)]
+    public float maxTimeForAwaking;
     public float soundForAwaking;
     public Image uiBarFront;
 
@@ -15,6 +17,16 @@ public class WinLoseManager : MonoBehaviour
     {
         uiBarFront.fillAmount = 0f;
     }
+
+    private void Update()
+    {
+        maxTimeForAwaking -= Time.deltaTime;
+        if(maxTimeForAwaking == 0)
+        {
+            loseVictims();
+        }
+    }
+
 
     public void AddSum(float added)
     {
@@ -31,5 +43,10 @@ public class WinLoseManager : MonoBehaviour
     public void Awaking()
     {
         Debug.Log("se despertó el humano, victimas han ganado");
+    }
+
+    public void loseVictims()
+    {
+        Debug.Log("se hizo de dia, victimas han perdido");
     }
 }
