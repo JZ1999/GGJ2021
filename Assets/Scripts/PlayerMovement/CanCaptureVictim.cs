@@ -8,27 +8,27 @@ public class CanCaptureVictim : MonoBehaviour
 {
     public GameObject UiButton;
 	public GameObject buttonPrefab;
-	private GameObject victim;
+	private GameObject prop;
 	public GameSetupController gameSetup;
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Victims"))
+        if (other.CompareTag("Props"))
         {
-            victim = other.gameObject;
+            prop = other.gameObject;
             UiButton.SetActive(true);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Victims"))
+        if (other.CompareTag("Props"))
         {
-            victim = null;
+            prop = null;
             UiButton.SetActive(false);
         }
     }
     public void Capture()
     {
-        gameSetup.Destroy(victim.GetComponent<PhotonView>().ViewID);
+		prop.GetComponent<Prop>().interactWithProp();
     }
 
 	public void SpawnCapture()

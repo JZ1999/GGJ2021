@@ -8,6 +8,7 @@ TagManager:
   - Capturer
   - Victims
   - Floor
+  - Props
   layers:
   - Default
   - TransparentFX
