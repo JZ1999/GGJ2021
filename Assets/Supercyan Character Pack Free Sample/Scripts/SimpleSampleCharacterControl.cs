@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SimpleSampleCharacterControl : MonoBehaviour
 {
@@ -43,7 +44,14 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private List<Collider> m_collisions = new List<Collider>();
 
-    private void Awake()
+	public VariableJoystick variableJoystick;
+	[SerializeField]
+	private GameObject joystick;
+	// Online vars
+	[HideInInspector]
+	public GameSetupController gameSetup;
+
+	private void Awake()
     {
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
@@ -114,16 +122,24 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+		if (!variableJoystick || !gameSetup)
+			return;
         m_animator.SetBool("Grounded", m_isGrounded);
 
-        switch (m_controlMode)
-        {
-            case ControlMode.Direct:
-                DirectUpdate();
-                break;
+		switch (m_controlMode)
+		{
+			case ControlMode.Direct:
+				break;
 
-            case ControlMode.Tank:
-                TankUpdate();
+			case ControlMode.Tank:
+				InputsInfo inputs = new InputsInfo(){
+					horizontal = variableJoystick.Horizontal,
+					vertical = variableJoystick.Vertical
+				};
+				int viewID = GetComponent<PhotonView>().ViewID;
+
+				gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
+				TankUpdate(variableJoystick.Horizontal, variableJoystick.Vertical);
                 break;
 
             default:
@@ -135,10 +151,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         m_jumpInput = false;
     }
 
-    private void TankUpdate()
+    public void TankUpdate(float h, float v)
     {
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
 
         bool walk = Input.GetKey(KeyCode.LeftShift);
 
@@ -164,11 +178,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         JumpingAndLanding();
     }
 
-    private void DirectUpdate()
+    private void DirectUpdate(float h, float v)
     {
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
-
         Transform camera = Camera.main.transform;
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -220,4 +231,11 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_animator.SetTrigger("Jump");
         }
     }
+
+	public void SpawnJoyStick()
+	{
+		GameObject canvas = ((Canvas)FindObjectOfType(typeof(Canvas))).gameObject;
+
+		variableJoystick = Instantiate(joystick, canvas.transform).GetComponent<VariableJoystick>();
+	}
 }

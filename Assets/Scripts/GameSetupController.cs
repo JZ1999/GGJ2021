@@ -29,7 +29,7 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	}
 
 	public void SendMessage(string type, string json, string viewID)
-	{
+	{ 
 		photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, type, json, viewID);
 	}
 
@@ -43,8 +43,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 		switch (type)
 		{
 			case "movement":
-				direction = JsonUtility.FromJson<Vector3>(json);
-				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<JoystickPlayerExample>().ApplyForce(direction);
+				InputsInfo inputs = JsonUtility.FromJson<InputsInfo>(json);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().TankUpdate(inputs.horizontal, inputs.vertical);
 				break;
 			case "rotation":
 				Vector3 newVector = JsonUtility.FromJson<Vector3>(json);
@@ -76,12 +76,12 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	private void CreatePlayer()
 	{
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
-		string prefabName = playersInRoom % 2 != 1 ? "Victim" : "Capturer";
+		string prefabName = playersInRoom % 2 != 1 ? "Creature" : "Creature Capturer";
 		Transform spawn = playersInRoom % 2 != 1 ? victimSpawn : capturerSpawn;
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
-		player.GetComponent<JoystickPlayerExample>().gameSetup = this;
-		player.GetComponent<PlayerRotate>().gameSetup = this;
-		player.GetComponent<Jump>().gameSetup = this;
+		player.GetComponent<SimpleSampleCharacterControl>().gameSetup = this;
+		//player.GetComponent<PlayerRotate>().gameSetup = this;
+		//player.GetComponent<Jump>().gameSetup = this;
 		if (player.GetComponentInChildren<CanCaptureVictim>())
 		{
 			player.GetComponentInChildren<CanCaptureVictim>().gameSetup = this;
