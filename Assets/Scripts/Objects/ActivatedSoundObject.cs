@@ -9,6 +9,7 @@ public class ActivatedSoundObject : MonoBehaviour
     private GameObject triggerObject;
     public SoundSO soundSO;
     public AudioSource audioSource;
+    public WinLoseManager winLoseManager;
     
     // Update is called once per frame
     private void Start()
@@ -55,6 +56,7 @@ public class ActivatedSoundObject : MonoBehaviour
                 Debug.Log("mucho");
                 break;
             default:
+                winLoseManager.AddSum(velocity);
                 audioSource.clip =  soundSO.sourceList[0].GetComponent<AudioSource>().clip;
                 audioSource.Play();
                 break;

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Assets/HealBar.meta
+guid: da32a8d51ae7ebd4cb4b5e699dbcda15
+=======
 guid: 407ae575299460243941dd43d4ecdff6
+>>>>>>> origin:Assets/Assets/EmaceArt.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
