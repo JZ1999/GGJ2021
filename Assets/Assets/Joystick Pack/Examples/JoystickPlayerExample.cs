@@ -12,9 +12,22 @@ public class JoystickPlayerExample : MonoBehaviour
 	[HideInInspector]
 	public GameSetupController gameSetup;
 
-    public void FixedUpdate()
+	[Range(120, 500)]
+	public int timeAnda;
+	public float _timeAnda = 0;
+	public void SetTimeAnda()
     {
-		if (!variableJoystick)
+		_timeAnda = timeAnda;
+
+    }
+	public void FixedUpdate()
+    {
+		if (_timeAnda > 0)
+		{
+			_timeAnda -= Time.deltaTime;
+			return;
+		}
+		if (!variableJoystick )
 			return;
 
 		if (variableJoystick.Vertical == 0 && variableJoystick.Vertical == 0)
