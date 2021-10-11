@@ -15,6 +15,7 @@ public class Prop : MonoBehaviour
 	public float addSound;
 	public WinLoseManager gameManager;
 	public float timerForUpdateSound = 1;
+	private GameObject currentParticles;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -51,9 +52,9 @@ public class Prop : MonoBehaviour
 
 	private void activateParticles()
 	{
-		if (particles)
+		if (particles && !currentParticles)
 		{
-			Instantiate(particles, transform);
+			currentParticles = Instantiate(particles, transform);
 		}
 	}
 
@@ -75,6 +76,8 @@ public class Prop : MonoBehaviour
 			GameObject particleObject = transform.GetComponentInChildren<ParticleSystem>()?.gameObject;
 			if(particleObject)
 				Destroy(particleObject);
+			if (currentParticles)
+				currentParticles = null;
 		}
 	}
 

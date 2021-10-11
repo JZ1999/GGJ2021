@@ -76,7 +76,6 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 	void SendPosition()
 	{
 		int viewID = GetComponent<PhotonView>().ViewID;
-		Debug.Log(gameSetup);
 		gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "teleport",
 			JsonUtility.ToJson(gameObject.transform.position), viewID.ToString());
 	}
