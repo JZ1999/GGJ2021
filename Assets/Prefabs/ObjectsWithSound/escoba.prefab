@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5640912510031733762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5640912510031733761}
+  m_Layer: 0
+  m_Name: escoba
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5640912510031733761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640912510031733762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.58, z: -22.276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5640209262237926803}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1484919463355859091
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641904965729183763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.061002
+  m_Center: {x: 1.98344e-10, y: -6.174723e-11, z: -0.034199715}
+--- !u!1001 &597225337814019806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5640912510031733761}
+    m_Modifications:
+    - target: {fileID: 1368148978, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
+      propertyPath: addSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368148978, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
+      propertyPath: propName
+      value: EA03_Items_House_Besom_01a_PRE Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368148978, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 144688, guid: 61a38e1f514545f47916177ba28811ee, type: 3}
+    - target: {fileID: 1368148978, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655481819877021254, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655481819877021254, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045676363290805965, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_Name
+      value: EA03_Items_House_Besom_01a_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045676363290805965, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Props
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.135
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.605
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.984862
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.020333106
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.14183348
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.097553544
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -13.771001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -16.728
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 10.153001
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4960791359114153643, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
+--- !u!1 &5641904965729183763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5045676363290805965, guid: a0b77ab5834751c4594d43ff647025a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 597225337814019806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5640209262237926803 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5048474945664527181, guid: a0b77ab5834751c4594d43ff647025a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 597225337814019806}
+  m_PrefabAsset: {fileID: 0}

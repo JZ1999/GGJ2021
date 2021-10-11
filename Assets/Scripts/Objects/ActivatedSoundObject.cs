@@ -13,6 +13,7 @@ public class ActivatedSoundObject : MonoBehaviour
     public GameObject unbrokenObject;
     public GameObject brokenObject;
     
+    
     // Update is called once per frame
     private void Start()
     {
@@ -20,7 +21,7 @@ public class ActivatedSoundObject : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(rb.velocity != Vector3.zero)
+        if(rb.velocity != Vector3.zero && rb.velocity.magnitude > 1)
         {
             velocity = rb.velocity.magnitude;
         }
@@ -40,8 +41,15 @@ public class ActivatedSoundObject : MonoBehaviour
     }
 
     private void CalcultatedSound() {
+        Debug.LogError(velocity);
         switch (Mathf.RoundToInt(velocity))
         {
+            case 0:
+                Debug.LogError("muy poquito");
+                break;
+            case 1:
+                Debug.LogError("poquito");
+                break;
             default:
                 winLoseManager.AddSum(velocity);
                 brokenObject.transform.position = gameObject.transform.position;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
 public class SimpleSampleCharacterControl : MonoBehaviour
@@ -48,7 +49,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private float m_jumpTimeStamp = 0;
     private float m_minJumpInterval = 0.25f;
-    private bool m_jumpInput = false;
+	[HideInInspector]
+    public bool m_jumpInput = false;
 
     private bool m_isGrounded;
 
@@ -57,6 +59,11 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 	public VariableJoystick variableJoystick;
 	[SerializeField]
 	private GameObject joystick;
+	[SerializeField]
+	private GameObject jumpButton;
+	[SerializeField]
+	private GameObject jumpButtonPrefab;
+
 	// Online vars
 	[HideInInspector]
 	public GameSetupController gameSetup;
@@ -275,5 +282,17 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 		GameObject canvas = ((Canvas)FindObjectOfType(typeof(Canvas))).gameObject;
 
 		variableJoystick = Instantiate(joystick, canvas.transform).GetComponent<VariableJoystick>();
+	}
+
+	public void SpawnJumpButton()
+	{
+		GameObject canvas = ((Canvas)FindObjectOfType(typeof(Canvas))).gameObject;
+
+		jumpButton = Instantiate(jumpButtonPrefab, canvas.transform);
+		jumpButton.GetComponent<Button>().onClick.AddListener(delegate {
+			m_jumpInput = true;
+			int viewID = GetComponent<PhotonView>().ViewID;
+			gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "jump", "", viewID.ToString());
+		});
 	}
 }

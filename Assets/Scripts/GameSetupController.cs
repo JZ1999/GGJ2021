@@ -57,8 +57,7 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<PlayerRotate>().ApplyRotation(newVector);
 				break;
 			case "jump":
-				direction = JsonUtility.FromJson<Vector3>(json);
-				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<Jump>().rb.AddForce(direction);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().m_jumpInput = true;
 				break;
 			case "prop":
 				PropInfo propInfo = JsonUtility.FromJson<PropInfo>(json);
@@ -82,8 +81,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	private void CreatePlayer()
 	{
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
-		string prefabName = PhotonNetwork.IsMasterClient ? "Creature Capturer" : "Creature";
-		Transform spawn = PhotonNetwork.IsMasterClient ? capturerSpawn : victimSpawn;
+		string prefabName = !PhotonNetwork.IsMasterClient ? "Creature Capturer" : "Creature";
+		Transform spawn = !PhotonNetwork.IsMasterClient ? capturerSpawn : victimSpawn;
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
 		player.GetComponent<SimpleSampleCharacterControl>().gameSetup = this;
 		//player.GetComponent<PlayerRotate>().gameSetup = this;

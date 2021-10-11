@@ -390,8 +390,12 @@ MonoBehaviour:
   m_animator: {fileID: 5964916625658492302}
   m_rigidBody: {fileID: 264922622727078081}
   m_controlMode: 0
+  m_jumpInput: 0
   variableJoystick: {fileID: 0}
   joystick: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
+    type: 3}
+  jumpButton: {fileID: 0}
+  jumpButtonPrefab: {fileID: 3107188617306199100, guid: ae0ee49bb9556454eb7905a923695f73,
     type: 3}
   gameSetup: {fileID: 0}
 --- !u!136 &264922622727078087
