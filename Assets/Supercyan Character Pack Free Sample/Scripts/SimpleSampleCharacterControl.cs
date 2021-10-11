@@ -139,7 +139,9 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void Update()
     {
-        if (!m_jumpInput && Input.GetKey(KeyCode.Space))
+		if (!GetComponent<PhotonView>().IsMine)
+			return;
+		if (!m_jumpInput && Input.GetKey(KeyCode.Space))
         {
             m_jumpInput = true;
         }
@@ -152,7 +154,9 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_timeAnda > 0)
+		if (!GetComponent<PhotonView>().IsMine)
+			return;
+		if (_timeAnda > 0)
         {
             _timeAnda -= Time.deltaTime;
             return;
