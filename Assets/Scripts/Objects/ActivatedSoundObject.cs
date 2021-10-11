@@ -10,6 +10,7 @@ public class ActivatedSoundObject : MonoBehaviour
     public SoundSO soundSO;
     public AudioSource audioSource;
     public WinLoseManager winLoseManager;
+    public GameObject unbrokenObject;
     public GameObject brokenObject;
     
     // Update is called once per frame
@@ -41,30 +42,16 @@ public class ActivatedSoundObject : MonoBehaviour
     private void CalcultatedSound() {
         switch (Mathf.RoundToInt(velocity))
         {
-            case 0:
-                Debug.Log("muy poquito");
-                break;
-            case 1:
-                Debug.Log("poquito");
-                break;
-            case 2:
-                Debug.Log("poco");
-                break;
-            case 3:
-                Debug.Log("normal");
-                break;
-            case 4:
-                Debug.Log("mucho");
-                break;
             default:
                 winLoseManager.AddSum(velocity);
                 brokenObject.transform.position = gameObject.transform.position;
                 brokenObject.SetActive(true);
                 audioSource.clip =  soundSO.sourceList[0].GetComponent<AudioSource>().clip;
                 audioSource.Play();
-                gameObject.SetActive(false);
+                unbrokenObject.SetActive(false);
                 break;
         };
+        audioSource.clip = null;
     }
     private void OnCollisionEnter(Collision collision)
     {
