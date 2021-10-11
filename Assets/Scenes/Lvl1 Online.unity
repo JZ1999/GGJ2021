@@ -62969,7 +62969,7 @@ PrefabInstance:
     - target: {fileID: 2729220359313218969, guid: 092b1ab54673d694c97f3be86b7ba9e6,
         type: 3}
       propertyPath: addSound
-      value: 0.03
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2729220359313218969, guid: 092b1ab54673d694c97f3be86b7ba9e6,
         type: 3}
@@ -63325,6 +63325,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 597225337000568108, guid: 46d273e4d2b06fd4ebefc731c9b849a2,
+        type: 3}
+      propertyPath: addSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 597225337000568108, guid: 46d273e4d2b06fd4ebefc731c9b849a2,
         type: 3}
       propertyPath: particles
