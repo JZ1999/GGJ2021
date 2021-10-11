@@ -67,7 +67,22 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
     }
 
-    private void OnCollisionEnter(Collision collision)
+	void Start()
+	{
+		if (!GetComponent<PhotonView>().IsMine)
+			return;
+		InvokeRepeating("SendPosition", 2f, 3f);  //1s delay, repeat every 1s
+	}
+	void SendPosition()
+	{
+		int viewID = GetComponent<PhotonView>().ViewID;
+		Debug.Log(gameSetup);
+		gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "teleport",
+			JsonUtility.ToJson(gameObject.transform.position), viewID.ToString());
+	}
+
+
+	private void OnCollisionEnter(Collision collision)
     {
         ContactPoint[] contactPoints = collision.contacts;
         for (int i = 0; i < contactPoints.Length; i++)

@@ -45,6 +45,9 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 		{
 			case "catch":
 				Debug.Log("se catch" + " " + PhotonView.Find(Int32.Parse(viewID)).gameObject);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.transform.position = JsonUtility.FromJson<Vector3>(json);
+				break;
+			case "teleport":
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().SetTimeAnda();
 				break;
 			case "movement":
