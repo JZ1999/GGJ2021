@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WinLoseManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class WinLoseManager : MonoBehaviour
     public Image uiBarFront;
     public GameObject uiLoseVictims;
     public GameObject uiLoseCapture;
+	public TMP_Text timeText;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class WinLoseManager : MonoBehaviour
     private void Update()
     {
         maxTimeForAwaking -= Time.deltaTime;
+		timeText.text = Mathf.Round(maxTimeForAwaking).ToString();
         if(maxTimeForAwaking <= 0)
         {
             LoseVictims();
