@@ -4,6 +4,16 @@ using Photon.Pun;
 
 public class SimpleSampleCharacterControl : MonoBehaviour
 {
+
+    [Range(120, 500)]
+    public int timeAnda;
+    public float _timeAnda = 0;
+    public void SetTimeAnda()
+    {
+        Debug.Log("se efectuo");
+        _timeAnda = timeAnda;
+
+    }
     private enum ControlMode
     {
         /// <summary>
@@ -118,11 +128,23 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_jumpInput = true;
         }
+        if (_timeAnda > 0)
+        {
+            Debug.Log("quieto pero en el upd");
+            _timeAnda -= Time.deltaTime;
+            return;
+        }
     }
 
     private void FixedUpdate()
     {
-		if (!variableJoystick || !gameSetup)
+        if (_timeAnda > 0)
+        {
+            Debug.Log("quieto");
+            _timeAnda -= Time.deltaTime;
+            return;
+        }
+        if (!variableJoystick || !gameSetup)
 			return;
         m_animator.SetBool("Grounded", m_isGrounded);
 
@@ -137,8 +159,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 					vertical = variableJoystick.Vertical
 				};
 				int viewID = GetComponent<PhotonView>().ViewID;
-
-				gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
+                if(inputs.horizontal  != 0 || inputs.vertical != 0) 
+				    gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
 				TankUpdate(variableJoystick.Horizontal, variableJoystick.Vertical);
                 break;
 

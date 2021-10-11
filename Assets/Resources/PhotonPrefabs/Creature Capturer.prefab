@@ -258,6 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba158ff05cf30224f94bfdddec8e7635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAnda: 0
+  _timeAnda: 0
   m_moveSpeed: 3
   m_turnSpeed: 200
   m_jumpForce: 4
@@ -1705,7 +1707,7 @@ PrefabInstance:
     - target: {fileID: 4573255443524770947, guid: adb77fc7eb5e5dc419363b6a02f701e4,
         type: 3}
       propertyPath: m_Radius
-      value: 3.38
+      value: 5.01
       objectReference: {fileID: 0}
     - target: {fileID: 4573255443524770947, guid: adb77fc7eb5e5dc419363b6a02f701e4,
         type: 3}

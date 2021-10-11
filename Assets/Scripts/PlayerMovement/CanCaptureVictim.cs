@@ -24,8 +24,11 @@ public class CanCaptureVictim : MonoBehaviour
         if (other.CompareTag("Victims"))
         {
             prop = other.gameObject;
-            UiButton.SetActive(true);
-        }
+			if (UiButton)
+			{
+				UiButton.SetActive(true);
+			}
+		}
     }
     private void OnTriggerExit(Collider other)
     {
@@ -69,12 +72,15 @@ public class CanCaptureVictim : MonoBehaviour
     }
 
     public void CaptureVictim()
-    {
+	{
+		Debug.Log("soy capturador");
 		int viewID = GetComponentInParent<PhotonView>().ViewID;
 		if (prop.CompareTag("Victims"))
 		{
-			Debug.Log(prop.name);
-			prop.GetComponent<JoystickPlayerExample>().SetTimeAnda(); //llamar lo online de jsopeh para que la ande el
+			viewID = prop.GetComponent<PhotonView>().ViewID;
+			Debug.Log("se envio");
+			gameSetup.GetComponent<PhotonView>().RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "catch", "", viewID.ToString());
+			//prop.GetComponent<SimpleSampleCharacterControl>().SetTimeAnda(); //llamar lo online de jsopeh para que la ande el
 		} else if (prop.CompareTag("Props")) {
 			PropInfo propInfo = new PropInfo()
 			{

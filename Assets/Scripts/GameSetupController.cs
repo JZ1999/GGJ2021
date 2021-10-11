@@ -39,9 +39,14 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 
 		if (sender.IsLocal)
 			return;
+		Debug.Log("se recibio algo" + " " +type);
 		Vector3 direction;
 		switch (type)
 		{
+			case "catch":
+				Debug.Log("se catch" + " " + PhotonView.Find(Int32.Parse(viewID)).gameObject);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().SetTimeAnda();
+				break;
 			case "movement":
 				InputsInfo inputs = JsonUtility.FromJson<InputsInfo>(json);
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().TankUpdate(inputs.horizontal, inputs.vertical);
