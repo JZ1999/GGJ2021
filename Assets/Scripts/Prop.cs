@@ -14,6 +14,7 @@ public class Prop : MonoBehaviour
 	[Range(0, 1)]
 	public float addSound;
 	public WinLoseManager gameManager;
+	public float timerForUpdateSound = 1;
 	private GameObject currentParticles;
 	// Start is called before the first frame update
 	void Start()
@@ -24,7 +25,15 @@ public class Prop : MonoBehaviour
     void Update()
     {
 		if (propSound.isPlaying)
-			gameManager.AddSum(addSound);
+		{
+			timerForUpdateSound -= Time.deltaTime;
+			if(timerForUpdateSound <= 0) 
+			{
+				timerForUpdateSound = 1;
+				gameManager.AddSum(addSound);
+			}
+			
+		}
 	}
 
 	public void interactWithProp()
