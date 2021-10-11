@@ -1,10 +1,27 @@
 using Photon.Pun;
 using UnityEngine;
+using TMPro;
 
 public class QuickStartRoomController : MonoBehaviourPunCallbacks
 {
 
 	public int multiplayerSceneIndex;
+	private bool joinedRoom = false;
+	public QuickStartLobbyController quickStartLobby;
+	public TMP_Text displayPlayers;
+
+	private void Update()
+	{
+		if (joinedRoom)
+		{
+			displayPlayers.text = PhotonNetwork.CurrentRoom.Players.Count + "/" + quickStartLobby.roomSize + " Players";
+			if (PhotonNetwork.CurrentRoom.Players.Count == quickStartLobby.roomSize)
+			{
+				StartGame();
+			}
+		}
+		
+	}
 
 	public override void OnEnable()
 	{
@@ -22,7 +39,7 @@ public class QuickStartRoomController : MonoBehaviourPunCallbacks
 	{
 		base.OnJoinedRoom();
 		Debug.Log("Joined room");
-		StartGame();
+		joinedRoom = true;
 	}
 
 	private void StartGame()
