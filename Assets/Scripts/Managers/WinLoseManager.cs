@@ -8,7 +8,7 @@ public class WinLoseManager : MonoBehaviour
 {
     [Range(100, 200)]
     public float maxSoundForAwaking;
-    [Range(100, 200)]
+    [Range(100, 500)]
     public float maxTimeForAwaking;
     public float soundForAwaking;
     public Image uiBarFront;

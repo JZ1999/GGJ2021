@@ -51,7 +51,7 @@ public class ActivatedSoundObject : MonoBehaviour
                 Debug.LogError("poquito");
                 break;
             default:
-                winLoseManager.AddSum(velocity);
+                winLoseManager.AddSum(velocity * 4);
                 brokenObject.transform.position = gameObject.transform.position;
                 brokenObject.SetActive(true);
                 audioSource.clip =  soundSO.sourceList[0].GetComponent<AudioSource>().clip;
