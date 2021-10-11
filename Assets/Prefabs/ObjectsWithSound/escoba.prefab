@@ -53,7 +53,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1368148978, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
       propertyPath: addSound
-      value: 0.028
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1368148978, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
       propertyPath: propName
@@ -66,6 +66,16 @@ PrefabInstance:
     - target: {fileID: 1368148978, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
       propertyPath: gameManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655481819877021254, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655481819877021254, guid: a0b77ab5834751c4594d43ff647025a3,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5045676363290805965, guid: a0b77ab5834751c4594d43ff647025a3,
         type: 3}
@@ -132,7 +142,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.153001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4960791359114153643, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0b77ab5834751c4594d43ff647025a3, type: 3}
 --- !u!1 &5641904965729183763 stripped
 GameObject:
