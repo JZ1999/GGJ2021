@@ -11,6 +11,8 @@ public class Prop : MonoBehaviour
 	[SerializeField]
 	private GameObject particles;
 	public string propName;
+	[Range(0, 1)]
+	public float addSound;
 	public WinLoseManager gameManager;
 	// Start is called before the first frame update
 	void Start()
@@ -21,7 +23,7 @@ public class Prop : MonoBehaviour
     void Update()
     {
 		if (propSound.isPlaying)
-			gameManager.AddSum(0.001f);
+			gameManager.AddSum(addSound);
 	}
 
 	public void interactWithProp()
