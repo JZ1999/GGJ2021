@@ -262,10 +262,11 @@ MonoBehaviour:
   _timeAnda: 0
   m_moveSpeed: 3
   m_turnSpeed: 200
-  m_jumpForce: 4
+  m_jumpForce: 6
   m_animator: {fileID: 5964916625658492302}
   m_rigidBody: {fileID: 264922622727078081}
   m_controlMode: 0
+  m_jumpInput: 0
   variableJoystick: {fileID: 0}
   joystick: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
     type: 3}
