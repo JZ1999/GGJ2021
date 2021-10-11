@@ -6,7 +6,7 @@ using Photon.Pun;
 public class SimpleSampleCharacterControl : MonoBehaviour
 {
 
-    [Range(120, 500)]
+    [Range(0, 500)]
     public int timeAnda;
     public float _timeAnda = 0;
     public void SetTimeAnda()

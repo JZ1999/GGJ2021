@@ -258,11 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba158ff05cf30224f94bfdddec8e7635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeAnda: 120
+  timeAnda: 15
   _timeAnda: 0
   m_moveSpeed: 3
   m_turnSpeed: 200
-  m_jumpForce: 6
+  m_jumpForce: 4
   m_animator: {fileID: 5964916625658492302}
   m_rigidBody: {fileID: 264922622727078081}
   m_controlMode: 0
@@ -1653,6 +1653,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 299358283394707444}
     m_Modifications:
+    - target: {fileID: 2399864746019039593, guid: b5a07989369719841bdc6bba1f747c7e,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399864746019039593, guid: b5a07989369719841bdc6bba1f747c7e,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399864746019039593, guid: b5a07989369719841bdc6bba1f747c7e,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399864746019039593, guid: b5a07989369719841bdc6bba1f747c7e,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2399864746019039594, guid: b5a07989369719841bdc6bba1f747c7e,
         type: 3}
       propertyPath: m_RootOrder
