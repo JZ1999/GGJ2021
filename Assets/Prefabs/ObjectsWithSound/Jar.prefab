@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4470864231542081818}
-  - component: {fileID: 7249196150045609175}
   - component: {fileID: 4957563805688750628}
   - component: {fileID: 7488358404468369861}
   - component: {fileID: 1536207896324321338}
@@ -36,27 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7249196150045609175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064227985923987775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handleRange: 1
-  deadZone: 0
-  axisOptions: 0
-  snapX: 0
-  snapY: 0
-  background: {fileID: 0}
-  handle: {fileID: 0}
-  moveThreshold: 1
-  joystickType: 0
 --- !u!82 &4957563805688750628
 AudioSource:
   m_ObjectHideFlags: 0

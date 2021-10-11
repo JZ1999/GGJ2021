@@ -14,7 +14,7 @@ public class Prop : MonoBehaviour
 	[Range(0, 1)]
 	public float addSound;
 	public WinLoseManager gameManager;
-	private float timerForUpdateSound = 1;
+	public float timerForUpdateSound = 1;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -26,7 +26,7 @@ public class Prop : MonoBehaviour
 		if (propSound.isPlaying)
 		{
 			timerForUpdateSound -= Time.deltaTime;
-			if(timerForUpdateSound == 0) 
+			if(timerForUpdateSound <= 0) 
 			{
 				timerForUpdateSound = 1;
 				gameManager.AddSum(addSound);
