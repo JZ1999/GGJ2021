@@ -269,6 +269,9 @@ MonoBehaviour:
   variableJoystick: {fileID: 0}
   joystick: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
     type: 3}
+  jumpButton: {fileID: 0}
+  jumpButtonPrefab: {fileID: 3107188617306199100, guid: ae0ee49bb9556454eb7905a923695f73,
+    type: 3}
   gameSetup: {fileID: 0}
 --- !u!136 &264922622727078087
 CapsuleCollider:

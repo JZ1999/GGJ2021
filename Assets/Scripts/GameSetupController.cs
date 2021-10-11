@@ -57,8 +57,7 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<PlayerRotate>().ApplyRotation(newVector);
 				break;
 			case "jump":
-				direction = JsonUtility.FromJson<Vector3>(json);
-				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<Jump>().rb.AddForce(direction);
+				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().m_jumpInput = true;
 				break;
 			case "prop":
 				PropInfo propInfo = JsonUtility.FromJson<PropInfo>(json);
