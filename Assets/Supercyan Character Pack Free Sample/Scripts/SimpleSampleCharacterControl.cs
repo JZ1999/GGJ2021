@@ -145,7 +145,6 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         }
         if (_timeAnda > 0)
         {
-            Debug.Log("quieto pero en el upd");
             _timeAnda -= Time.deltaTime;
             return;
         }
@@ -155,7 +154,6 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     {
         if (_timeAnda > 0)
         {
-            Debug.Log("quieto");
             _timeAnda -= Time.deltaTime;
             return;
         }
