@@ -82,8 +82,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	private void CreatePlayer()
 	{
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
-		string prefabName = playersInRoom % 2 != 1 ? "Creature" : "Creature Capturer";
-		Transform spawn = playersInRoom % 2 != 1 ? victimSpawn : capturerSpawn;
+		string prefabName = playersInRoom == 1 ? "Creature Capturer" : "Creature";
+		Transform spawn = playersInRoom == 1 ? capturerSpawn : victimSpawn;
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
 		player.GetComponent<SimpleSampleCharacterControl>().gameSetup = this;
 		//player.GetComponent<PlayerRotate>().gameSetup = this;
