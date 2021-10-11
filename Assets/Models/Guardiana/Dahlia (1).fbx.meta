@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: b0e6efb8bc2e2824a8d16dbd08b710a9
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: -203655887218126122
+    second: mixamo.com
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blusa.001
+    second: {fileID: 2100000, guid: df4fd8cf3f089314497ba2f383e57e3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body.001
+    second: {fileID: 2100000, guid: f364d5ef17acad74dae6096ef07ac1d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Botas.001
+    second: {fileID: 2100000, guid: c3a244a81b5703a46bead46cccab1ff5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cejas.001
+    second: {fileID: 2100000, guid: d3ea485c6037f404596550f11bef080a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Corset.001
+    second: {fileID: 2100000, guid: 068ff0d8ebbf9a747afd1a057f8e5c6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Falda.001
+    second: {fileID: 2100000, guid: a9f5ae34a0084d847bc71d675b6ac323, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gema.001
+    second: {fileID: 2100000, guid: e34f91db25de2ea4a97cfec5ea06ecf6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mono.001
+    second: {fileID: 2100000, guid: ad157ef70975ab742b68e429efbd9b5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ojos
+    second: {fileID: 2100000, guid: afc12f3dd109b4947b23969e625af998, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pelo.001
+    second: {fileID: 2100000, guid: de19ca860972ff84ebc2895267268ac2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pestanas.001
+    second: {fileID: 2100000, guid: 7a4b974eabbe89b4abd0a13f5def57b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Short.001
+    second: {fileID: 2100000, guid: e3c73b3544e95b644a109978f464ced5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teeth.001
+    second: {fileID: 2100000, guid: 534f7fed952e27d468da2874968c23d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tiara.001
+    second: {fileID: 2100000, guid: da86c25ea86c3da458d58170151500b7, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips:
+  - 7acdcc4c5121f2841bdce4e16a46258d
+  - 45a8e57f104f11f4e90995a30c95bd25
+  - 8c1c00e0ea05f9341987d9bbea9521a6
+  - 00da654a0cdd39040bce7d014af7d96c
+  - c1618dacb3bdf834eb0c28a2de7645c0
+  - 7175c92212450b74590e5a720b7c8118
+  - bbc64b3251f39f642b2fe09b15f347a6
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
