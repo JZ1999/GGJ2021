@@ -179,8 +179,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
 			case ControlMode.Tank:
 				InputsInfo inputs = new InputsInfo(){
-					horizontal = variableJoystick.Horizontal,
-					vertical = variableJoystick.Vertical
+					horizontal =  Application.platform == RuntimePlatform.Android ? variableJoystick.Horizontal : Input.GetAxis("Horizontal"),
+					vertical = Application.platform == RuntimePlatform.Android ? variableJoystick.Vertical : Input.GetAxis("Vertical")
 				};
 				int viewID = GetComponent<PhotonView>().ViewID;
                 if (inputs.horizontal != 0 || inputs.vertical != 0)
@@ -191,7 +191,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
                     isMoving = false;
                     gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
                 };
-				TankUpdate(variableJoystick.Horizontal, variableJoystick.Vertical);
+				TankUpdate(inputs.horizontal, inputs.vertical);
                 break;
 
             default:
