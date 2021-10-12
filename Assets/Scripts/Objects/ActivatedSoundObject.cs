@@ -12,7 +12,8 @@ public class ActivatedSoundObject : MonoBehaviour
     public WinLoseManager winLoseManager;
     public GameObject unbrokenObject;
     public GameObject brokenObject;
-    
+    [Range(1, 15)]
+    public float sumItemBroken;
     
     // Update is called once per frame
     private void Start()
@@ -32,7 +33,6 @@ public class ActivatedSoundObject : MonoBehaviour
                 
                 if (triggerObject)
                 {
-                    Debug.Log("entro");
                     CalcultatedSound();
                 }
                 velocity = 0;
@@ -41,17 +41,14 @@ public class ActivatedSoundObject : MonoBehaviour
     }
 
     private void CalcultatedSound() {
-        Debug.LogError(velocity);
         switch (Mathf.RoundToInt(velocity))
         {
             case 0:
-                Debug.LogError("muy poquito");
                 break;
             case 1:
-                Debug.LogError("poquito");
                 break;
             default:
-                winLoseManager.AddSum(velocity * 4);
+                winLoseManager.AddSum(velocity * 10);
                 brokenObject.transform.position = gameObject.transform.position;
                 brokenObject.SetActive(true);
                 audioSource.clip =  soundSO.sourceList[0].GetComponent<AudioSource>().clip;
@@ -63,7 +60,6 @@ public class ActivatedSoundObject : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
         triggerObject = collision.gameObject;
     }
     private void OnTriggerExit()

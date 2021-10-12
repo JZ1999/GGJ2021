@@ -24,7 +24,11 @@ public class WinLoseManager : MonoBehaviour
 
     private void Update()
     {
-        maxTimeForAwaking -= Time.deltaTime;
+        if (maxTimeForAwaking >= 0)
+            maxTimeForAwaking -= Time.deltaTime;
+        else
+            maxTimeForAwaking = 0;
+        
 		timeText.text = Mathf.Round(maxTimeForAwaking).ToString();
         if(maxTimeForAwaking <= 0)
         {

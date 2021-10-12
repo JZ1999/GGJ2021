@@ -54,7 +54,6 @@ public class QuickStartLobbyController : MonoBehaviourPunCallbacks
 		int randomRoomNumber = Random.Range(0, 10_000);
 		RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte) roomSize };
 		PhotonNetwork.CreateRoom("Room" + randomRoomNumber, roomOptions);
-		Debug.Log(randomRoomNumber);
 	}
 
 	public override void OnCreateRoomFailed(short returnCode, string message)

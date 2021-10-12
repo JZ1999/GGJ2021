@@ -18,6 +18,9 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 
 	public GameObject[] props;
 
+	public enum prefabsChoices {creatureCapturer , creature};
+	public prefabsChoices playerPrefab = prefabsChoices.creature;
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -84,6 +87,20 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 		int playersInRoom = PhotonNetwork.CurrentRoom.Players.Keys.Count;
 		string prefabName = PhotonNetwork.IsMasterClient ? "Creature Capturer" : "Creature";
 		Transform spawn = PhotonNetwork.IsMasterClient ? capturerSpawn : victimSpawn;
+#if UNITY_EDITOR
+		if(playerPrefab == prefabsChoices.creature)
+        {
+			prefabName = "Creature";
+			spawn = victimSpawn;
+
+		}
+        else
+        {
+			prefabName = "Creature Capturer";
+			spawn = capturerSpawn;
+
+		}
+#endif
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);
 		player.GetComponent<SimpleSampleCharacterControl>().gameSetup = this;
 		//player.GetComponent<PlayerRotate>().gameSetup = this;

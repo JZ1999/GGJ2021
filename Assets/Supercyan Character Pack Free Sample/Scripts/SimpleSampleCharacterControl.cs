@@ -188,7 +188,6 @@ public class SimpleSampleCharacterControl : MonoBehaviour
                     isMoving = true;
                     gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
                 }else if (isMoving) {
-                    Debug.Log("si entra" + " " + inputs);
                     isMoving = false;
                     gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
                 };

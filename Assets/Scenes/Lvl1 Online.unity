@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36757475, g: 0.3730671, b: 0.34759328, a: 1}
+  m_IndirectSpecularColor: {r: 0.36757496, g: 0.37306738, b: 0.34759337, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1310,6 +1310,10 @@ PrefabInstance:
       propertyPath: victimSpawn
       value: 
       objectReference: {fileID: 895036095}
+    - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
+      propertyPath: playerPrefab
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
       propertyPath: capturerSpawn
       value: 
@@ -43010,21 +43014,6 @@ PrefabInstance:
     - target: {fileID: 4213771901048576111, guid: e130e38798e5e6c4786663cf7d25d485,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7177082115189700784, guid: e130e38798e5e6c4786663cf7d25d485,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7177082115189700784, guid: e130e38798e5e6c4786663cf7d25d485,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689437416303995649, guid: e130e38798e5e6c4786663cf7d25d485,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9116108018620128423, guid: e130e38798e5e6c4786663cf7d25d485,
