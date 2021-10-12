@@ -13,17 +13,23 @@ public class QuickStartRoomController : MonoBehaviourPunCallbacks
 
 	private void Update()
 	{
+		int currentPlayerCount = 0;
 		if (joinedRoom && !startedGame)
 		{
-			displayPlayers.text = PhotonNetwork.CurrentRoom.Players.Count + "/" + quickStartLobby.roomSize + " Players";
+			if(PhotonNetwork.CurrentRoom?.Players?.Count != null)
+			{
+				currentPlayerCount = PhotonNetwork.CurrentRoom.Players.Count;
+			}
+			displayPlayers.text = currentPlayerCount + "/" + quickStartLobby.roomSize + " Players";
 			if (PhotonNetwork.CurrentRoom.Players.Count == quickStartLobby.roomSize)
 			{
 				StartGame();
 				startedGame = true;
 			}
 		}
-		
+		displayPlayers.text = currentPlayerCount + "/" + quickStartLobby.roomSize + " Players";
 	}
+
 
 	public override void OnEnable()
 	{
