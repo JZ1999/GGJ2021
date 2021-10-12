@@ -67,6 +67,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 	// Online vars
 	[HideInInspector]
 	public GameSetupController gameSetup;
+    private bool isMoving = false;
 
 	private void Awake()
     {
@@ -182,8 +183,15 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 					vertical = variableJoystick.Vertical
 				};
 				int viewID = GetComponent<PhotonView>().ViewID;
-                if(inputs.horizontal  != 0 || inputs.vertical != 0) 
-				    gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
+                if (inputs.horizontal != 0 || inputs.vertical != 0)
+                {
+                    isMoving = true;
+                    gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
+                }else if (isMoving) {
+                    Debug.Log("si entra" + " " + inputs);
+                    isMoving = false;
+                    gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "movement", JsonUtility.ToJson(inputs), viewID.ToString());
+                };
 				TankUpdate(variableJoystick.Horizontal, variableJoystick.Vertical);
                 break;
 
@@ -200,7 +208,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     {
 
         bool walk = Input.GetKey(KeyCode.LeftShift);
-
+        
         if (v < 0)
         {
             if (walk) { v *= m_backwardsWalkScale; }
@@ -217,7 +225,11 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
         transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
 
-        m_animator.SetFloat("MoveSpeed", m_currentV);
+        if (h != 0 && v != 0) {
+            m_animator.SetFloat("MoveSpeed", m_currentV);
+        }
+        else { m_animator.SetFloat("MoveSpeed", 0); }
+        
         m_animator.SetFloat("RotationSpeed",h);
 
         JumpingAndLanding();

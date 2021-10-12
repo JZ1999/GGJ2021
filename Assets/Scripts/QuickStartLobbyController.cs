@@ -9,7 +9,8 @@ public class QuickStartLobbyController : MonoBehaviourPunCallbacks
 	public GameObject quickStartButton;
 	public GameObject quickCancelButton;
 	public GameObject loadingButton;
-	public int roomSize;
+	public int roomSize = 5;
+	public GameObject lessPlayersButton;
 
 	public override void OnConnectedToMaster()
 	{
@@ -31,6 +32,9 @@ public class QuickStartLobbyController : MonoBehaviourPunCallbacks
 	// Start is called before the first frame update
 	void Start()
     {
+#if UNITY_EDITOR
+		lessPlayersButton.SetActive(true);
+#endif
 		PhotonNetwork.Disconnect();
 		PhotonNetwork.ConnectUsingSettings();		
 		quickStartButton.GetComponent<Button>().interactable = PhotonNetwork.IsConnectedAndReady;
@@ -65,4 +69,15 @@ public class QuickStartLobbyController : MonoBehaviourPunCallbacks
 		quickStartButton.SetActive(true);
 		PhotonNetwork.LeaveRoom();
 	}
+
+#if UNITY_EDITOR
+	[UnityEditor.MenuItem("Window/Less Max Players")]
+	public void LessRoomSize()
+    {
+		roomSize -= 1;
+		if (roomSize == 0)
+			roomSize = 5;
+	}
+	
+#endif
 }
