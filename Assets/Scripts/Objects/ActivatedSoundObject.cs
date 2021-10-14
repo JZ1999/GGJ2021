@@ -45,8 +45,6 @@ public class ActivatedSoundObject : MonoBehaviour
         {
             case 0:
                 break;
-            case 1:
-                break;
             default:
                 winLoseManager.AddSum(velocity * 10);
                 brokenObject.transform.position = gameObject.transform.position;
@@ -57,6 +55,7 @@ public class ActivatedSoundObject : MonoBehaviour
                 break;
         };
         audioSource.clip = null;
+        gameObject.GetComponent<ActivatedSoundObject>().enabled = false;
     }
     private void OnCollisionEnter(Collision collision)
     {
