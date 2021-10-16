@@ -53,7 +53,6 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 				break;
 			case "movement":
 				InputsInfo inputs = JsonUtility.FromJson<InputsInfo>(json);
-				Debug.Log(inputs.horizontal + " " + inputs.vertical);
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().TankUpdate(inputs.horizontal, inputs.vertical);
 				break;
 			case "rotation":
