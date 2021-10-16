@@ -6,20 +6,28 @@ using System;
 
 public class GameSetupController : MonoBehaviourPun, IPunObservable
 {
-
+	[Header("Multiplayer")]
 	public PhotonView photonView;
-
 	public List<GameObject> players;
+	public enum prefabsChoices { creatureCapturer, creature };
+	public prefabsChoices playerPrefab = prefabsChoices.creature;
 
+	[Space]
+	[Header("Spawns")]
 	public Transform victimSpawn;
 	public Transform capturerSpawn;
 
-	public GameObject prefab;
-
+	[Space]
+	[Header("Props")]
+	[Tooltip("The props in the match")]
 	public GameObject[] props;
 
-	public enum prefabsChoices {creatureCapturer , creature};
-	public prefabsChoices playerPrefab = prefabsChoices.creature;
+	[Space]
+	[Header("Managers")]
+	[SerializeField]
+	private WinLoseManager winLoseManager;
+
+
 
 
 	// Start is called before the first frame update
@@ -47,6 +55,10 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 		{
 			case "catch":
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.GetComponent<SimpleSampleCharacterControl>().SetTimeAnda();
+				break;
+			case "fillbar":
+				FillBarInfo fillbar = JsonUtility.FromJson<FillBarInfo>(json);
+				winLoseManager.SetSoundForAwaking(fillbar.fillAmount);
 				break;
 			case "teleport":
 				PhotonView.Find(Int32.Parse(viewID)).gameObject.transform.position = JsonUtility.FromJson<Vector3>(json);

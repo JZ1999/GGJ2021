@@ -27,16 +27,28 @@ public class WinLoseManager : MonoBehaviour
     public int multiplayerSceneIndex = 0;
     [Range(1, 10)]
     public int timeForRestart = 5;
-    private bool isUIActive = false;
+	public GameSetupController gameSetup;
+	private bool isUIActive = false;
 
     // Start is called before the first frame update
     void Start()
     {
         uiBarFront.fillAmount = 0f;
-    }
+
+		InvokeRepeating("SendBarFillAmount", 2f, 1f);  //1s delay, repeat every 1s
+	}
+
+	private void SendBarFillAmount()
+	{
+		FillBarInfo fillBarInfo = new FillBarInfo() {
+			fillAmount = soundForAwaking
+		};
+		gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "fillbar",
+			JsonUtility.ToJson(fillBarInfo), "");
+	}
 
 
-    private void FixedUpdate()
+	private void FixedUpdate()
     {
         isUIActive = !uiLoseCapture.activeSelf && !uiLoseVictims.activeSelf;
         if (maxTimeForAwaking >= 0)
@@ -49,26 +61,30 @@ public class WinLoseManager : MonoBehaviour
         {
             LoseVictims();
         }
-    }
+
+		if (soundForAwaking >= maxSoundForAwaking && isUIActive)
+		{
+			Awaking();
+		}
+	}
 
 
     public void AddSum(float added)
     {
-
+		if (!PhotonNetwork.IsMasterClient)
+			return;
         soundForAwaking += added;
         uiBarFront.fillAmount = soundForAwaking / maxSoundForAwaking;
-
-        if (soundForAwaking >= maxSoundForAwaking && isUIActive)
-        {
-            Awaking();
-        }
     }
 
+	public void SetSoundForAwaking(float value)
+	{
+		soundForAwaking = value;
+	}
 
-    public IEnumerator RestartGame()
+	public IEnumerator RestartGame()
     {
         yield return new WaitForSeconds(timeForRestart);
-        PhotonNetwork.Disconnect();
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(multiplayerSceneIndex);
     }

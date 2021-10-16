@@ -376,6 +376,11 @@ PrefabInstance:
       objectReference: {fileID: 100365380}
     - target: {fileID: 2962569706031600488, guid: d0c758e6b3da7334cb74830df7ca6f38,
         type: 3}
+      propertyPath: gameSetup
+      value: 
+      objectReference: {fileID: 61894983}
+    - target: {fileID: 2962569706031600488, guid: d0c758e6b3da7334cb74830df7ca6f38,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1320,6 +1325,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1932809858}
     - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
+      propertyPath: winLoseManager
+      value: 
+      objectReference: {fileID: 1354110447}
+    - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
       propertyPath: props.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1394,6 +1403,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
+--- !u!114 &61894983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 61894982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7af9bf731efe647a1e2cdcf72be099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &65500546
 PrefabInstance:
   m_ObjectHideFlags: 0
