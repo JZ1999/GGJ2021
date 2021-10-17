@@ -1339,8 +1339,7 @@ PrefabInstance:
     - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
       propertyPath: props.Array.data[1]
       value: 
-      objectReference: {fileID: 5045676363290805965, guid: a0b77ab5834751c4594d43ff647025a3,
-        type: 3}
+      objectReference: {fileID: 1174411858}
     - target: {fileID: 1944670226200956514, guid: 6066142b13b1d5e4e90630c0cb4f80b0,
         type: 3}
       propertyPath: m_RootOrder
@@ -29094,7 +29093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1041905802}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33254,6 +33253,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46d273e4d2b06fd4ebefc731c9b849a2, type: 3}
+--- !u!1 &1174411858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5641904965729183763, guid: 46d273e4d2b06fd4ebefc731c9b849a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174411857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1177912128
 PrefabInstance:
   m_ObjectHideFlags: 0
