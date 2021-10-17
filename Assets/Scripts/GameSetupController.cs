@@ -9,8 +9,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	[Header("Multiplayer")]
 	public PhotonView photonView;
 	public List<GameObject> players;
-	public enum prefabsChoices { creatureCapturer, creature };
-	public prefabsChoices playerPrefab = prefabsChoices.creature;
+	public enum prefabsChoices { creatureCapturer, creature, none };
+	public prefabsChoices playerPrefab = prefabsChoices.none;
 
 	[Space]
 	[Header("Spawns")]
@@ -109,11 +109,10 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 			spawn = victimSpawn;
 
 		}
-        else
+        else if(playerPrefab == prefabsChoices.creatureCapturer)
         {
 			prefabName = "Creature Capturer";
 			spawn = capturerSpawn;
-
 		}
 #endif
 		GameObject player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", prefabName), spawn.position, Quaternion.identity);

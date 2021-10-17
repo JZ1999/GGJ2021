@@ -80,7 +80,7 @@ public class CanCaptureVictim : MonoBehaviour
 			viewID = prop.GetComponent<PhotonView>().ViewID;
 			Debug.Log("se envio");
 			gameSetup.GetComponent<PhotonView>().RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "catch", "", viewID.ToString());
-			//prop.GetComponent<SimpleSampleCharacterControl>().SetTimeAnda(); //llamar lo online de jsopeh para que la ande el
+			prop.GetComponent<SimpleSampleCharacterControl>().SetTimeAnda(); //llamar lo online de jsopeh para que la ande el
 		} else if (prop.CompareTag("Props")) {
 			PropInfo propInfo = new PropInfo()
 			{

@@ -159,28 +159,24 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_jumpInput = true;
         }
-        if (_timeAnda > 0)
+    }
+
+    private void FixedUpdate()
+    {
+		
+		if (_timeAnda > 0)
         {
-            
             uiBarAnda.fillAmount = _timeAnda / timeAnda;
             _timeAnda -= Time.deltaTime;
             return;
         }
         else
         {
-            uiBarAndaObject.SetActive(false);
+            if (uiBarAndaObject)
+                uiBarAndaObject.SetActive(false);
         }
-    }
-
-    private void FixedUpdate()
-    {
-		if (!GetComponent<PhotonView>().IsMine)
-			return;
-		if (_timeAnda > 0)
-        {
-            _timeAnda -= Time.deltaTime;
+        if (!GetComponent<PhotonView>().IsMine)
             return;
-        }
         if (!variableJoystick || !gameSetup)
 			return;
         m_animator.SetBool("Grounded", m_isGrounded);
