@@ -37,6 +37,7 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 		photonView = gameObject.AddComponent<PhotonView>();
 		photonView.ViewID = 1;
 		CreatePlayer();
+		PhotonNetwork.CurrentRoom.IsVisible = false; // Lock room so no more join
 	}
 
 	public void SendMessage(string type, string json, string viewID)
