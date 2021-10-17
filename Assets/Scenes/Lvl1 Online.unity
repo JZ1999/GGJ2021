@@ -1318,7 +1318,7 @@ PrefabInstance:
       objectReference: {fileID: 895036095}
     - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
       propertyPath: playerPrefab
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
       propertyPath: capturerSpawn

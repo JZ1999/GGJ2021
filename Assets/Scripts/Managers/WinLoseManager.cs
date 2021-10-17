@@ -35,6 +35,8 @@ public class WinLoseManager : MonoBehaviour
     {
         uiBarFront.fillAmount = 0f;
 
+		if (!PhotonNetwork.IsMasterClient)
+			return;
 		InvokeRepeating("SendBarFillAmount", 2f, 1f);  //1s delay, repeat every 1s
 	}
 
@@ -43,6 +45,7 @@ public class WinLoseManager : MonoBehaviour
 		FillBarInfo fillBarInfo = new FillBarInfo() {
 			fillAmount = soundForAwaking
 		};
+		Debug.LogFormat("{0} here", fillBarInfo.fillAmount);
 		gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "fillbar",
 			JsonUtility.ToJson(fillBarInfo), "");
 	}
@@ -80,6 +83,7 @@ public class WinLoseManager : MonoBehaviour
 	public void SetSoundForAwaking(float value)
 	{
 		soundForAwaking = value;
+		uiBarFront.fillAmount = soundForAwaking / maxSoundForAwaking;
 	}
 
 	public IEnumerator RestartGame()
