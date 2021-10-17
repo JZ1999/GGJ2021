@@ -11,7 +11,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     public float _timeAnda = 0;
     public void SetTimeAnda()
     {
-        Debug.Log("se efectuo");
+        uiBarAndaObject.SetActive(true);
         _timeAnda = timeAnda;
 
     }
@@ -30,6 +30,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     [Space]
     [Header("UI")]
     public Image uiBarAnda;
+    public GameObject uiBarAndaObject;
 
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
@@ -158,9 +159,14 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         }
         if (_timeAnda > 0)
         {
+            
             uiBarAnda.fillAmount = _timeAnda / timeAnda;
             _timeAnda -= Time.deltaTime;
             return;
+        }
+        else
+        {
+            uiBarAndaObject.SetActive(false);
         }
     }
 
