@@ -77,8 +77,11 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 				break;
 			case "prop":
 				PropInfo propInfo = JsonUtility.FromJson<PropInfo>(json);
-				foreach(GameObject prop in props)
+				Debug.Log(propInfo.interactionType);
+				Debug.Log(propInfo.name);
+				foreach (GameObject prop in props)
 				{
+					Debug.LogFormat("{0} - {1}", prop.GetComponent<Prop>().propName, propInfo.name);
 					if(prop.GetComponent<Prop>().propName == propInfo.name)
 					{
 						if(propInfo.interactionType == "activate")
