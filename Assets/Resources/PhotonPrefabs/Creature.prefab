@@ -262,6 +262,7 @@ MonoBehaviour:
   timeAnda: 15
   _timeAnda: 0
   uiBarAnda: {fileID: 2886120748345415182}
+  uiBarAndaObject: {fileID: 2697636023247049514}
   m_moveSpeed: 3
   m_turnSpeed: 200
   m_jumpForce: 26
@@ -2080,6 +2081,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d636065961d4b34a9ecd3c02e336351, type: 3}
+--- !u!1 &2697636023247049514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4288654822497671800, guid: 1d636065961d4b34a9ecd3c02e336351,
+    type: 3}
+  m_PrefabInstance: {fileID: 2228069591526754642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2239432616099656399 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 144011165927111581, guid: 1d636065961d4b34a9ecd3c02e336351,
