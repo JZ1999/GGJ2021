@@ -195,6 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeAnda: 0
   _timeAnda: 0
+  uiBarAnda: {fileID: 0}
+  uiBarAndaObject: {fileID: 0}
   m_moveSpeed: 3
   m_turnSpeed: 200
   m_jumpForce: 32

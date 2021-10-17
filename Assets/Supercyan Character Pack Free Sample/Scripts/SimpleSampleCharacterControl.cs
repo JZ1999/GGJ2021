@@ -11,6 +11,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     public float _timeAnda = 0;
     public void SetTimeAnda()
     {
+        if (_timeAnda > 0)
+            return;
         uiBarAndaObject.SetActive(true);
         _timeAnda = timeAnda;
 
