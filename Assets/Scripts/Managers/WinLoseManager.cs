@@ -45,7 +45,6 @@ public class WinLoseManager : MonoBehaviour
 		FillBarInfo fillBarInfo = new FillBarInfo() {
 			fillAmount = soundForAwaking
 		};
-		Debug.LogFormat("{0} here", fillBarInfo.fillAmount);
 		gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "fillbar",
 			JsonUtility.ToJson(fillBarInfo), "");
 	}
