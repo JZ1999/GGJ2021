@@ -27,6 +27,10 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         Direct
     }
 
+    [Space]
+    [Header("UI")]
+    public Image uiBarAnda;
+
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
     [SerializeField] private float m_jumpForce = 4;
@@ -154,6 +158,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         }
         if (_timeAnda > 0)
         {
+            uiBarAnda.fillAmount = _timeAnda / timeAnda;
             _timeAnda -= Time.deltaTime;
             return;
         }
