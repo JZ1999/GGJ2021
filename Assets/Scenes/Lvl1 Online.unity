@@ -1318,7 +1318,7 @@ PrefabInstance:
       objectReference: {fileID: 895036095}
     - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
       propertyPath: playerPrefab
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 61894984, guid: 6066142b13b1d5e4e90630c0cb4f80b0, type: 3}
       propertyPath: capturerSpawn
@@ -33186,6 +33186,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 597225337000568108, guid: 46d273e4d2b06fd4ebefc731c9b849a2,
+        type: 3}
+      propertyPath: propName
+      value: EA03_Items_House_Besom_01a_PRE
+      objectReference: {fileID: 0}
     - target: {fileID: 597225337000568108, guid: 46d273e4d2b06fd4ebefc731c9b849a2,
         type: 3}
       propertyPath: gameManager
