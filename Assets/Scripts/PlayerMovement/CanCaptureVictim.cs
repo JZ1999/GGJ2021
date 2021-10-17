@@ -43,7 +43,8 @@ public class CanCaptureVictim : MonoBehaviour
         if(other.CompareTag("Victims"))
         {
             prop = null;
-            UiButton.SetActive(false);
+			if(UiButton)
+				UiButton.SetActive(false);
         }
     }
     public void Capture()
