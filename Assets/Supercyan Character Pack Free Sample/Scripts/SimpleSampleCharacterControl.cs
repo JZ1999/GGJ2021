@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class SimpleSampleCharacterControl : MonoBehaviour
 {
@@ -70,11 +71,15 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 	private GameObject jumpButton;
 	[SerializeField]
 	private GameObject jumpButtonPrefab;
+	[SerializeField]
+	[Tooltip("Used to check when scene has loaded")]
+	private string sceneName;
 
 	// Online vars
 	[HideInInspector]
 	public GameSetupController gameSetup;
     private bool isMoving = false;
+	private bool sceneLoaded = false;
 
 	private void Awake()
     {
@@ -86,10 +91,19 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 	{
 		if (!GetComponent<PhotonView>().IsMine)
 			return;
+		if (!sceneLoaded)
+		{
+			sceneLoaded = SceneManager.GetActiveScene().name == sceneName;
+			int viewID = GetComponent<PhotonView>().ViewID;
+			gameSetup.photonView.RPC("MasterClientMessage", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer, "loaded", "", viewID);
+		}
+
 		InvokeRepeating("SendPosition", 2f, 3f);  //1s delay, repeat every 1s
 	}
 	void SendPosition()
 	{
+		if (!gameSetup.arePlayersReady())
+			return;
 		int viewID = GetComponent<PhotonView>().ViewID;
 		gameSetup.photonView.RPC("SendChat", RpcTarget.All, PhotonNetwork.LocalPlayer, "teleport",
 			JsonUtility.ToJson(gameObject.transform.position), viewID.ToString());
@@ -155,6 +169,9 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     {
 		if (!GetComponent<PhotonView>().IsMine)
 			return;
+		if (!gameSetup.arePlayersReady())
+			return;
+
 		if (!m_jumpInput && Input.GetKey(KeyCode.Space))
         {
             m_jumpInput = true;
@@ -163,7 +180,9 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-		
+		if (!gameSetup.arePlayersReady())
+			return;
+
 		if (_timeAnda > 0)
         {
             uiBarAnda.fillAmount = _timeAnda / timeAnda;
@@ -188,8 +207,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
 			case ControlMode.Tank:
 				InputsInfo inputs = new InputsInfo(){
-					horizontal =  Application.platform == RuntimePlatform.Android ? variableJoystick.Horizontal : Input.GetAxis("Horizontal"),
-					vertical = Application.platform == RuntimePlatform.Android ? variableJoystick.Vertical : Input.GetAxis("Vertical")
+					horizontal =  Application.platform != RuntimePlatform.Android ? Input.GetAxis("Horizontal"): variableJoystick.Horizontal,
+					vertical = Application.platform != RuntimePlatform.Android ? Input.GetAxis("Vertical") : variableJoystick.Vertical
 				};
 				int viewID = GetComponent<PhotonView>().ViewID;
                 if (inputs.horizontal != 0 || inputs.vertical != 0)

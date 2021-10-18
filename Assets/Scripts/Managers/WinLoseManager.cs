@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -28,6 +27,7 @@ public class WinLoseManager : MonoBehaviour
     [Range(1, 10)]
     public int timeForRestart = 5;
 	public GameSetupController gameSetup;
+
 	private bool isUIActive = false;
 
     // Start is called before the first frame update
@@ -52,7 +52,10 @@ public class WinLoseManager : MonoBehaviour
 
 	private void FixedUpdate()
     {
-        isUIActive = !uiLoseCapture.activeSelf && !uiLoseVictims.activeSelf;
+		if (!gameSetup.arePlayersReady())
+			return;
+
+		isUIActive = !uiLoseCapture.activeSelf && !uiLoseVictims.activeSelf;
         if (maxTimeForAwaking >= 0)
             maxTimeForAwaking -= Time.deltaTime;
         else

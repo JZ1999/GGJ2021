@@ -210,6 +210,7 @@ MonoBehaviour:
   jumpButton: {fileID: 0}
   jumpButtonPrefab: {fileID: 3107188617306199100, guid: ae0ee49bb9556454eb7905a923695f73,
     type: 3}
+  sceneName: Lvl1 Online
   gameSetup: {fileID: 0}
 --- !u!136 &264922622727078087
 CapsuleCollider:

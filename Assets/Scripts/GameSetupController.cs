@@ -8,7 +8,6 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 {
 	[Header("Multiplayer")]
 	public PhotonView photonView;
-	public List<GameObject> players;
 	public enum prefabsChoices { creatureCapturer, creature, none };
 	public prefabsChoices playerPrefab = prefabsChoices.none;
 
@@ -27,17 +26,28 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 	[SerializeField]
 	private WinLoseManager winLoseManager;
 
+	private IDictionary<GameObject, bool> playersReady;
+
 
 
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		players = new List<GameObject>();
 		photonView = gameObject.AddComponent<PhotonView>();
 		photonView.ViewID = 1;
 		CreatePlayer();
 		PhotonNetwork.CurrentRoom.IsVisible = false; // Lock room so no more join
+	}
+
+	public bool arePlayersReady()
+	{
+		foreach(bool playerReady in playersReady.Values)
+		{
+			if (!playerReady)
+				return false;
+		}
+		return true;
 	}
 
 	public void SendMessage(string type, string json, string viewID)
@@ -51,7 +61,6 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 
 		if (sender.IsLocal)
 			return;
-		Vector3 direction;
 		switch (type)
 		{
 			case "catch":
@@ -77,11 +86,8 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 				break;
 			case "prop":
 				PropInfo propInfo = JsonUtility.FromJson<PropInfo>(json);
-				Debug.Log(propInfo.interactionType);
-				Debug.Log(propInfo.name);
 				foreach (GameObject prop in props)
 				{
-					Debug.LogFormat("{0} - {1}", prop.GetComponent<Prop>().propName, propInfo.name);
 					if(prop.GetComponent<Prop>().propName == propInfo.name)
 					{
 						if(propInfo.interactionType == "activate")
@@ -93,6 +99,29 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 						}
 					}
 				}
+				break;
+			default:
+				Debug.LogWarningFormat("Incorrect message type: {0} from {1}", type, viewID);
+				break;
+		}
+	}
+
+	[PunRPC]
+	void MasterClientMessage(Photon.Realtime.Player sender, string type, string json, int viewID)
+	{
+		switch (type)
+		{
+			case "loaded":
+				for(int i = 0; i < playersReady.Keys.Count; i++) {
+					GameObject player = new List<GameObject>(playersReady.Keys)[i];
+					if(player.GetComponent<PhotonView>().ViewID == viewID)
+					{
+						playersReady[player] = true;
+					}
+				}
+				break;
+			default:
+				Debug.LogWarningFormat("Incorrect message type: {0} from {1}", type, viewID);
 				break;
 		}
 	}
@@ -123,9 +152,12 @@ public class GameSetupController : MonoBehaviourPun, IPunObservable
 		{
 			player.GetComponentInChildren<CanCaptureVictim>().gameSetup = this;
 		}
-		
 
-		players.Add(player);
+		if (PhotonNetwork.IsMasterClient)
+		{
+			playersReady = new Dictionary<GameObject, bool>(PhotonNetwork.CurrentRoom.PlayerCount);
+			playersReady.Add(player, false);
+		}
 	}
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
